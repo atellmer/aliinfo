@@ -1,5 +1,12 @@
-@extends('admin/app/index')
+@extends('admin.app.index')
 
+	<div class="admin-panel">
+		<a href="/admin/article/create">Новая карточка</a>
+		<br>
+		<br>
+		<a href="/logout">Выйти</a>
+	</div>
+			
 @section('content')
 
 	<div class="info">
@@ -14,7 +21,7 @@
 				<div class="social__item social__item--instagram"></div>
 			</a>
 		</div>
-		<div class="contest">
+		<!--div class="contest">
 			<div class="contest__icon"></div>
 			<div class="contest__title"><a href="#" class="title-link">Конкурсы</a></div>
 			<div class="contest__links">
@@ -27,7 +34,7 @@
 				<a href="#" class="links-item">Мужские часы</a>
 				<a href="#" class="links-item">Мужские часы</a>
 			</div>
-		</div>
+		</div-->
 	</div>
 	
 	@foreach($posts as $post)
@@ -37,8 +44,8 @@
 				{{Form::open(array('route' => array('admin.post.edit', $post -> id), 'method' => 'get'))}}
         			<button type="submit" class="btn btn-primary btn-mini btn-main">Редактировать</button>
         		{{Form::close()}}	
-				<div class="card__title">{{$post -> title}}</div>
-				<div class="card__anonce">{{$post -> anonce}}</div>
+				<h2 class="card__title">{{$post -> title}}</h2>
+				<p class="card__anonce">{{$post -> anonce}}</p>
 				<div class="btn-container">
 					<a href="admin/post/{{$post -> id}}">
 						<div class="card-btn">Смотреть...</div>

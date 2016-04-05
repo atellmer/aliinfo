@@ -5,26 +5,116 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Arcanedev\SeoHelper\Entities\Title;
+use Arcanedev\SeoHelper\Entities\Description;
+use Arcanedev\SeoHelper\Entities\Keywords;
+use Arcanedev\SeoHelper\Entities\OpenGraph\Graph;
+use Arcanedev\SeoHelper\Entities\Twitter\Card;
 use App\Models\Post;
+
 
 class IndexController extends Controller
 {
     public function index(Post $postModel)
 	{	
-		$posts = $postModel -> getPublishedPosts();
+		$nameDefault = 'Aliinfo';
+		$titleDefaul = 'ЧТО Я НАШЕЛ НА АЛИЭКСПРЕСС';
+		$descriptionDefault = 'Что я нашел на алиэкспресс — это крутые видеообзоры на самые интересные вещи с сайта Aliexpress! Заходи!';
+		$keywordsDefault = 'алиэкспресс, aliexpress, обзоры товаров, китайский магазин, топ алиэкспресс, что я нашел на алиэкспресс';
+		$urlDefault = 'http://aliinfo.ru';
+		$imgDefault = '/public/client/img/social.png';
 		
-		return view('post.index', ['posts' => $posts]);
+		$posts = $postModel->getPublishedPosts();
+		
+		$title = new Title;	
+		$description = new Description;
+		$keywords = new Keywords;
+		$openGraph = new Graph;
+		$card = new Card;
+		
+		$title
+			->set($titleDefaul)
+			->setSeparator('|')
+			->setSiteName($nameDefault);
+		
+		$description->set($descriptionDefault);
+		
+		$keywords->set($keywordsDefault);
+		
+		$openGraph
+			->setType('website')
+			->setTitle($titleDefaul)
+			->setDescription($descriptionDefault)
+			->setSiteName($nameDefault)
+			->setUrl($urlDefault)
+			->setImage($imgDefault);
+		
+		$card->setType('summary_large_image');
+		$card->setSite('@aliinfo'); 
+		$card->setTitle($titleDefaul);
+		$card->setDescription($descriptionDefault);
+		$card->addImage($imgDefault);
+		
+		return view('post.index', [
+				'posts' => $posts, 
+				'title' => $title,
+				'description' => $description,
+				'keywords' => $keywords,
+				'openGraph' => $openGraph,
+				'card' => $card
+			]);
 	}
 	
 	public function show(Post $postModel, $id)
 	{
-		$post = $postModel -> find($id);
-		return view('post.show', ['post' => $post]);
+		$nameDefault = 'Aliinfo';
+		$urlDefault = 'http://aliinfo.ru';
+		
+		$post = $postModel->find($id);
+		
+		$title = new Title;
+		$description = new Description;
+		$keywords = new Keywords;
+		$openGraph = new Graph;
+		$card = new Card;
+		
+		
+		$title
+			->set($post->seo_title)
+			->setSeparator('|')
+			->setSiteName($nameDefault);
+		
+		$description->set($post->seo_description);
+		
+		$keywords->set($post->seo_keywords);
+		
+		$openGraph
+			->setType('website')
+			->setTitle($post->seo_title)
+			->setDescription($post->seo_description)
+			->setSiteName($nameDefault)
+			->setUrl($urlDefault)
+			->setImage($post->photo);
+		
+		$card->setType('summary_large_image');
+		$card->setSite('@aliinfo');
+		$card->setTitle($post->seo_title);
+		$card->setDescription($post->seo_description);
+		$card->addImage($post->photo);
+		
+		return view('post.show', [
+				'post' => $post, 
+				'title' => $title,
+				'description' => $description,
+				'keywords' => $keywords,
+				'openGraph' => $openGraph,
+				'card' => $card
+		]);
 	}
 	
 	public function register()
 	{
-		return redirect() -> route('root');
+		return redirect()->route('root');
 	}
 	
 }

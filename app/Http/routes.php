@@ -13,3 +13,5 @@ Route::group(['middleware' => 'web'], function () {
 Route::get('/', ['as' => 'root', 'uses' => 'IndexController@index']);
 Route::get('post/{id}', ['as' => 'post.show', 'uses' => 'IndexController@show']);
 Route::get('/register', ['as' => 'register', 'uses' => 'IndexController@register']);
+
+Route::any('{path?}', ['as' => 'root', 'uses' => 'IndexController@index']);
