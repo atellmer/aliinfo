@@ -24,7 +24,7 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="public/client/img/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="public/client/img/favicon/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="public/client/img/favicon/favicon-16x16.png">
-	<link rel="icon" type="image/x-icon" href="public/client/img/favicon/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="http://aliinfo.ru/favicon.ico">
 	<link rel="manifest" href="/manifest.json">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="public/client/img/favicon/ms-icon-144x144.png">
