@@ -9,7 +9,7 @@ class Upload
 	{
 		if(getimagesize($_FILES['photo']['tmp_name']))
 		{
-			$uploaddir = 'images/preview/';
+			$uploaddir = '/images/preview/';
 			$rand = rand(1111111111, 9999999999).'_'.date('Ymd');
 			$name = basename($_FILES['photo']['name']);
 			$extension = $this -> getExtension($name);
