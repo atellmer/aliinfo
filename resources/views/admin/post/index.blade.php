@@ -17,24 +17,10 @@
 			<a target="_blank" href="http://www.youtube.com/channel/UCaCISDWNpCe7PpNviWMBP5A">
 				<div class="social__item social__item--youtube"></div>
 			</a>
-			<a target="_blank" href="#">
+			<a target="_blank" href="https://www.instagram.com/aliexpressdarom/">
 				<div class="social__item social__item--instagram"></div>
 			</a>
 		</div>
-		<!--div class="contest">
-			<div class="contest__icon"></div>
-			<div class="contest__title"><a href="#" class="title-link">Конкурсы</a></div>
-			<div class="contest__links">
-				<a href="#" class="links-item">Мужские часы</a>
-				<a href="#" class="links-item">Мужские часы</a>
-				<a href="#" class="links-item">Мужские часы</a>
-				<a href="#" class="links-item">Мужские часы</a>
-				<a href="#" class="links-item">Мужские часы</a>
-				<a href="#" class="links-item">Мужские часы</a>
-				<a href="#" class="links-item">Мужские часы</a>
-				<a href="#" class="links-item">Мужские часы</a>
-			</div>
-		</div-->
 	</div>
 	
 	@foreach($posts as $post)
