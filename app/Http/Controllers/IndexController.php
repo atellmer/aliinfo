@@ -15,16 +15,17 @@ use App\Models\Post;
 
 class IndexController extends Controller
 {
-    public function index(Post $postModel)
-	{	
-		$nameDefault = 'Aliinfo';
+	public function index(Post $postModel)
+	{
+		$nameDefault = 'ALIINFO';
 		$titleDefaul = 'ЧТО Я НАШЕЛ НА АЛИЭКСПРЕСС';
-		$descriptionDefault = 'Что я нашел на алиэкспресс — это крутые видеообзоры на самые интересные вещи с сайта Aliexpress! Заходи!';
-		$keywordsDefault = 'алиэкспресс, aliexpress, обзоры товаров, китайский магазин, топ алиэкспресс, что я нашел на алиэкспресс';
+		$descriptionDefault = 'Что я нашел на алиэкспресс — это видеообзоры на самые интересные вещи с сайта Aliexpress! aliinfo';
+		$keywordsDefault = 'aliinfo, алиинфо, алиэкспресс, aliexpress, обзоры товаров, китайский магазин, топ алиэкспресс, что я нашел на алиэкспресс';
 		$urlDefault = 'http://aliinfo.ru';
-		$imgDefault = '/public/client/img/social.png';
+		$imgDefault = '/public/client/img/social.jpg';
 		
 		$posts = $postModel->getPublishedPosts();
+		$lastModified = $postModel->getLastModified();
 		
 		$title = new Title;	
 		$description = new Description;
@@ -56,29 +57,30 @@ class IndexController extends Controller
 		$card->addImage($imgDefault);
 		
 		return view('post.index', [
-				'posts' => $posts, 
-				'title' => $title,
-				'description' => $description,
-				'keywords' => $keywords,
-				'openGraph' => $openGraph,
-				'card' => $card
-			]);
+			'lastModified' => $lastModified,
+			'posts' => $posts, 
+			'title' => $title,
+			'description' => $description,
+			'keywords' => $keywords,
+			'openGraph' => $openGraph,
+			'card' => $card
+		]);
 	}
 	
 	public function show(Post $postModel, $id)
 	{
-		$nameDefault = 'Aliinfo';
+		$nameDefault = 'ALIINFO';
 		$urlDefault = 'http://aliinfo.ru';
 		
 		$post = $postModel->find($id);
+		$lastModified = $postModel->getLastModified();
 		
 		$title = new Title;
 		$description = new Description;
 		$keywords = new Keywords;
 		$openGraph = new Graph;
 		$card = new Card;
-		
-		
+
 		$title
 			->set($post->seo_title)
 			->setSeparator('|')
@@ -103,12 +105,13 @@ class IndexController extends Controller
 		$card->addImage($post->photo);
 		
 		return view('post.show', [
-				'post' => $post, 
-				'title' => $title,
-				'description' => $description,
-				'keywords' => $keywords,
-				'openGraph' => $openGraph,
-				'card' => $card
+			'lastModified' => $lastModified,
+			'post' => $post, 
+			'title' => $title,
+			'description' => $description,
+			'keywords' => $keywords,
+			'openGraph' => $openGraph,
+			'card' => $card
 		]);
 	}
 	
@@ -116,5 +119,4 @@ class IndexController extends Controller
 	{
 		return redirect()->route('root');
 	}
-	
 }

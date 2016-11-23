@@ -1,3 +1,7 @@
+<?
+header('Last-Modified: '.$lastModified);
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -31,7 +35,7 @@
 	<meta name="theme-color" content="#ffffff">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="HandheldFriendly" content="true">
-	<meta property="vk:app_id" content="6666666">
+	<meta property="vk:app_id" content="5735284">
 	{!!$openGraph -> render()!!}
 	{!!$card -> render()!!}
 	<meta name="google-site-verification" content="sMId6075Lhfx7m3mcawI3iPvIBv-B3v4Fw3HHzPXClg">
@@ -39,7 +43,7 @@
 	<meta name="wmail-verification" content="c5afbdfdf4781d0b73dae0d4bef811d7">
 	<link rel="stylesheet" href="/public/client/bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="/public/client/dist/bundle.min.css">
+	<link rel="stylesheet" href="/public/client/dist/bundle.css">
 </head>
 
 <body>
@@ -48,41 +52,18 @@
 			<h1 class="header__title"><a href="/" class="title-link">Что я нашел на Алиэкспресс</a></h1>
 		</header>
 		<div class="container container-margin">
-
 			@yield('content')
-
 		</div>
 	</div>
-	<script>
-		(function (d, w, c) {
-			(w[c] = w[c] || []).push(function () {
-				try {
-					w.yaCounter36426255 = new Ya.Metrika({
-						id: 36426255,
-						clickmap: true,
-						trackLinks: true,
-						accurateTrackBounce: true,
-						webvisor: true
-					});
-				} catch (e) {}
-			});
-			var n = d.getElementsByTagName("script")[0],
-				s = d.createElement("script"),
-				f = function () {
-					n.parentNode.insertBefore(s, n);
-				};
-			s.type = "text/javascript";
-			s.async = true;
-			s.src = "https://mc.yandex.ru/metrika/watch.js";
-			if (w.opera == "[object Opera]") {
-				d.addEventListener("DOMContentLoaded", f, false);
-			} else {
-				f();
-			}
-		})(document, window, "yandex_metrika_callbacks");
-	</script>
+
+	<script src="//vk.com/js/api/openapi.js?136"></script>
+	<script src="/public/client/dist/pluso.js"></script>
+	<script src="/public/client/dist/metrics.js"></script>
+	<script src="/public/client/dist/bundle.js"></script>
 	<noscript>
-		<div><img src="https://mc.yandex.ru/watch/36426255" style="position:absolute; left:-9999px;" alt="" /></div>
+		<div>
+			<img src="https://mc.yandex.ru/watch/36426255" style="position:absolute; left:-9999px;" alt="" />
+		</div>
 	</noscript>
 </body>
 

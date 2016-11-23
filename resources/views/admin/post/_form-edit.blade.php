@@ -8,7 +8,8 @@
 </div>
 <div class="form-group">
 	{!!Form::label('Статья')!!}
-	{!!Form::textarea('detail', $post -> detail, ['class' => 'form-control'])!!}
+	<input id="editor-input" name="detail" type="hidden" value="{{ $post -> detail }}">
+	<div id="editor-container"></div>
 </div>
 <div class="form-group">
 	{!!Form::label('Ссылка на видео')!!}

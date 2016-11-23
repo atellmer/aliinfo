@@ -7,7 +7,7 @@
 			<a target="_blank" href="http://vk.com/cnaliexpress">
 				<div class="social__item social__item--vk"></div>
 			</a>
-			<a target="_blank" href="http://www.youtube.com/channel/UCaCISDWNpCe7PpNviWMBP5A">
+			<a target="_blank" href="http://www.youtube.com/channel/UCaCISDWNpCe7PpNviWMBP5A?sub_confirmation=1">
 				<div class="social__item social__item--youtube"></div>
 			</a>
 			<a target="_blank" href="https://www.instagram.com/aliexpressdarom/">
@@ -19,8 +19,12 @@
 	@foreach($posts as $post)
 		<article itemscope itemtype="http://schema.org/Article">
 			<div class="card">
-				<div class="card__cover" style="background-image: url({{$post -> photo}});" itemprop="image"></div>
-				<h2 class="card__title" itemprop="name">{{$post -> title}}</h2>
+				<a href="post/{{$post -> id}}" itemprop="url">
+					<div class="card__cover" style="background-image: url({{$post -> photo}});" itemprop="image"></div>
+				</a>
+				<a href="post/{{$post -> id}}" itemprop="url">
+					<h2 class="card__title" itemprop="name">{{$post -> title}}</h2>
+				</a>
 				<p class="card__anonce" itemprop="description">{{$post -> anonce}}</p>
 				<div class="btn-container">
 					<a href="post/{{$post -> id}}" itemprop="url">
@@ -28,7 +32,7 @@
 					</a>
 				</div>
 			</div>
-		</article>	
+		</article>
 	@endforeach
 
 	<div class="ali-pagination">

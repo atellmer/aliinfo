@@ -1,6 +1,6 @@
 <?php
 Route::group(['middleware' => 'web'], function () {
-    Route::auth();
+	Route::auth();
 	Route::get('admin', ['as' => 'admin.posts', 'uses' => 'AdminController@index']);
 	Route::get('admin/article/create', ['as' => 'admin.article.create', 'uses' => 'AdminController@create']);
 	Route::post('admin/post', ['as' => 'admin.post.store', 'uses' => 'AdminController@store']);

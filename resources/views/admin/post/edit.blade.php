@@ -5,7 +5,7 @@
 	<div class="edit-block">
 		<h3>Редактирование карточки...</h3>
 		<br>
-		{!!Form::open(array('route' => array('admin.post.update', $post -> id), 'method' => 'put', 'files' => true))!!}
+		{!!Form::open(array('route' => array('admin.post.update', $post -> id), 'method' => 'put', 'files' => true, 'id' => 'editor-form'))!!}
 			@include('admin/post/_form-edit')
 		{!!Form::close()!!}
 		{{Form::open(array('route' => array('admin.post.destroy', $post -> id), 'method' => 'delete'))}}

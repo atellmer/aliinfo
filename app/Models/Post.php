@@ -18,4 +18,12 @@ class Post extends Model
 		
 		return $posts;
 	}
+
+	public function getLastModified()
+	{	
+		
+		$lastModified = gmdate('D, d M Y H:i:s').' GMT';
+		
+		return $lastModified;
+	}
 }
